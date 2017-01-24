@@ -1,0 +1,9 @@
+name: 'UNL Breadcrumbs'
+description: 'Implements custom breadcrumb builder for UNL'
+package: UNL
+
+type: module
+core: 8.x
+
+version: 1.x
+
