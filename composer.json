@@ -1,0 +1,12 @@
+{
+  "name": "unlcms/unl_breadcrumbs",
+  "description": "UNL breadcrumb implementation",
+  "type": "drupal-module",
+  "authors": [
+    {
+      "name": "Michael Fairchild (mfairchild365)",
+      "homepage": "https://www.drupal.org/user/1616702",
+      "role": "Maintainer"
+    }
+  ]
+}
