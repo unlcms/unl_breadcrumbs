@@ -1,0 +1,13 @@
+{
+  "name": "unlcms/unl_breadcrumbs",
+  "description": "UNL breadcrumb implementation",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Chris Burge",
+      "homepage": "https://www.drupal.org/u/chris-burge",
+      "role": "Maintainer"
+    }
+  ]
+}
