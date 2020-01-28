@@ -224,7 +224,7 @@ class UnlBreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
     array_pop($links);
 
     // Set site root breadcrumb.
-    if ($this->config->get('site_root_breadcrumb_title_use_site_title')) {
+    if ($this->config->get('site_root_breadcrumb_title_use_site_name')) {
       $links[] = Link::createFromRoute($this->siteConfig->get('name'), '<front>');
     }
     elseif ($site_root_breadcrumb_title = $this->config->get('site_root_breadcrumb_title')) {
