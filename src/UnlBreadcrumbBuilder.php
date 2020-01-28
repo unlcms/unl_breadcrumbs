@@ -121,11 +121,18 @@ class UnlBreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
   protected $routeMatch;
 
   /**
-   * The route match service.
+   * UNL Breadcrumbs config (unl_breadcrumbs.settings).
    *
    * @var \Drupal\Core\Config\Config
    */
   protected $config;
+
+  /**
+   * Site config (system.site)
+   *
+   * @var \Drupal\Core\Config\Config
+   */
+  protected $siteConfig;
 
   /**
    * Constructs the UnlBreadcrumbBuilder.
@@ -167,6 +174,7 @@ class UnlBreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
     $this->menuActiveTrail = $menu_active_trail;
     $this->routeMatch = $route_match;
     $this->config = $config_factory->get('unl_breadcrumbs.settings');
+    $this->siteConfig = $config_factory->get('system.site');
   }
 
   /**
@@ -216,7 +224,10 @@ class UnlBreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
     array_pop($links);
 
     // Set site root breadcrumb.
-    if ($site_root_breadcrumb_title = $this->config->get('site_root_breadcrumb_title')) {
+    if ($this->config->get('site_root_breadcrumb_title_use_site_title')) {
+      $links[] = Link::createFromRoute($this->siteConfig->get('name'), '<front>');
+    }
+    elseif ($site_root_breadcrumb_title = $this->config->get('site_root_breadcrumb_title')) {
       $links[] = Link::createFromRoute($site_root_breadcrumb_title, '<front>');
     }
 

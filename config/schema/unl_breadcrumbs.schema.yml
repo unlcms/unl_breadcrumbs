@@ -4,6 +4,9 @@ unl_breadcrumbs.settings:
     site_root_breadcrumb_title:
       label: Site Root Breadcrumb Title
       type: string
+    site_root_breadcrumb_title_use_site_title:
+      label: Use Site Title as Site Root Breadcrumb Title
+      type: boolean
     interstitial_breadcrumbs:
       label: Interstitial Breadcrumbs
       type: sequence

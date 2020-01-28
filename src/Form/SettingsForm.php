@@ -48,6 +48,17 @@ class SettingsForm extends ConfigFormBase {
       '#title' => $this->t('Site Root Breadcrumb Title'),
       '#description' => $this->t('The title used for this site in breadcrumbs. E.g. "Nebraska > [Site Root Breadcrumb Title] > [Page Title]". In the instance of the flagship site, this setting will be empty.'),
       '#default_value' => $config->get('site_root_breadcrumb_title'),
+      '#states' => [
+        'disabled' => [
+          ':input[name="site_root_breadcrumb_title_use_site_title"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+    $form['site_root_breadcrumb_title_use_site_title'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Use Site Title as Site Root Breadcrumb Title'),
+      '#description' => $this->t('If checked, the Site Title will be used instead of a custom title.'),
+      '#default_value' => $config->get('site_root_breadcrumb_title_use_site_title'),
     ];
 
     $form['interstitial_wrapper'] = [
@@ -205,6 +216,7 @@ class SettingsForm extends ConfigFormBase {
     $this->configFactory->getEditable(static::SETTINGS)
       // Set the submitted configuration setting.
       ->set('site_root_breadcrumb_title', $form_state->getValue('site_root_breadcrumb_title'))
+      ->set('site_root_breadcrumb_title_use_site_title', $form_state->getValue('site_root_breadcrumb_title_use_site_title'))
       ->set('interstitial_breadcrumbs', $interstitial)
       ->save();
 
