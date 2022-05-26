@@ -212,6 +212,11 @@ class UnlBreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
     $cache_tags = $breadcrumbs->getCacheTags();
     $cache_max_age = $breadcrumbs->getCacheMaxAge();
 
+    // Add additional cache contexts for when dealing with groups,
+    // domain access, or other cases with different addresses to same content.
+    $cache_contexts[] = 'url.path';
+    $cache_contexts[] = 'url.query_args';
+    
     // Create new Breadcrumb instance.
     $breadcrumbs = new Breadcrumb();
     $breadcrumbs->addCacheContexts($cache_contexts);
