@@ -9,7 +9,7 @@ use Drupal\Core\Controller\TitleResolverInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
-use Drupal\Core\Menu\MenuActiveTrail;
+use Drupal\Core\Menu\MenuActiveTrailInterface;
 use Drupal\Core\Path\CurrentPathStack;
 use Drupal\Core\Path\PathMatcherInterface;
 use Drupal\Core\PathProcessor\InboundPathProcessorInterface;
@@ -161,12 +161,12 @@ class UnlBreadcrumbBuilder extends PathBasedBreadcrumbBuilder {
    *   The request stack that controls the lifecycle of requests.
    * @param \Drupal\Core\Routing\AdminContext $admin_context
    *   A helper class to determine whether the route is an admin one.
-   * @param \Drupal\Core\Menu\MenuActiveTrail $menu_active_trail
-   *   Provides the default implementation of the active menu trail service.
+   * @param \Drupal\Core\Menu\MenuActiveTrailInterface $menu_active_trail
+   *   The active menu trail service.
    * @param \Drupal\Core\Routing\CurrentRouteMatch $route_match
    *   The route match service.
    */
-  public function __construct(RequestContext $context, AccessManagerInterface $access_manager, RequestMatcherInterface $router, InboundPathProcessorInterface $path_processor, ConfigFactoryInterface $config_factory, TitleResolverInterface $title_resolver, AccountInterface $current_user, CurrentPathStack $current_path, PathMatcherInterface $path_matcher = NULL, EntityTypeManagerInterface $entity_type_manager, RequestStack $request_stack, AdminContext $admin_context, MenuActiveTrail $menu_active_trail, CurrentRouteMatch $route_match) {
+  public function __construct(RequestContext $context, AccessManagerInterface $access_manager, RequestMatcherInterface $router, InboundPathProcessorInterface $path_processor, ConfigFactoryInterface $config_factory, TitleResolverInterface $title_resolver, AccountInterface $current_user, CurrentPathStack $current_path, PathMatcherInterface $path_matcher = NULL, EntityTypeManagerInterface $entity_type_manager, RequestStack $request_stack, AdminContext $admin_context, MenuActiveTrailInterface $menu_active_trail, CurrentRouteMatch $route_match) {
     parent::__construct($context, $access_manager, $router, $path_processor, $config_factory, $title_resolver, $current_user, $current_path, $path_matcher);
     $this->entityTypeManager = $entity_type_manager;
     $this->requestStack = $request_stack;
